@@ -70,6 +70,9 @@ class autonomous_system:
                         self.hops[asys]
                     other_as.next_jump[asys] = self
 
+                    if other_as.hops[asys] == math.inf:
+                        other_as.next_jump[asys] = None
+
     def display_asys_info(self):
         print(f'Autonomous System {self}:')
         print(f'Local Preference: {self.local_preference}')
