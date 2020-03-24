@@ -1,2 +1,2 @@
-# bgp-simulator
+# BGP Simulator
 Simulates the Border Gateway Protocol
