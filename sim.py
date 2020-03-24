@@ -1,5 +1,6 @@
 from autonomous_system import autonomous_system
 from optimize import optimize
+from tabulate import tabulate
 
 
 def main():
@@ -19,12 +20,12 @@ def main():
     # as5.neighbours = {as4: 100, as6: 100}
     # as6.neighbours = {as1: 100, as5: 100}
 
-    as1 = autonomous_system(10)
-    as2 = autonomous_system(20)
-    as3 = autonomous_system(30)
-    as4 = autonomous_system(40)
-    as5 = autonomous_system(50)
-    as6 = autonomous_system(60)
+    as1 = autonomous_system(1)
+    as2 = autonomous_system(2)
+    as3 = autonomous_system(3)
+    as4 = autonomous_system(4)
+    as5 = autonomous_system(5)
+    as6 = autonomous_system(6)
 
     as1.neighbours = {as2: 100, as3: 100}
     as2.neighbours = {as1: 100, as4: 100}
@@ -36,6 +37,13 @@ def main():
     systems = [as1, as2, as3, as4, as5, as6]
 
     optimize(systems)
+
+    for asys in systems:
+        print(f'Routing Table for {asys}:')
+        print()
+        print(tabulate(asys.display_routing_table(), headers=[
+              'Autonomous System', 'Weight', 'Hops', 'Next Jump'], tablefmt='orgtbl'))
+        print()
 
 
 if __name__ == '__main__':

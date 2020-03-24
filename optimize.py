@@ -10,10 +10,12 @@ def optimize(systems):
             for other_as in asys.neighbours.keys():
                 asys.update(other_as)
 
-    for asys in autonomous_system.systems:
+    for asys in systems:
         asys.display_asys_info()
         print()
 
-    for asys in autonomous_system.systems:
-        asys.display_routing_table()
-        print()
+    print()
+
+    # for asys in systems:
+    # print(asys.display_routing_table())
+    # print()
