@@ -9,13 +9,3 @@ def optimize(systems):
         for asys in systems:
             for other_as in asys.neighbours.keys():
                 asys.update(other_as)
-
-    for asys in systems:
-        asys.display_asys_info()
-        print()
-
-    print()
-
-    # for asys in systems:
-    # print(asys.display_routing_table())
-    # print()

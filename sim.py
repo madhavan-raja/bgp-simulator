@@ -4,8 +4,6 @@ from tabulate import tabulate
 
 
 def main():
-    systems = []
-
     # as1 = autonomous_system(10)
     # as2 = autonomous_system(20)
     # as3 = autonomous_system(30)
@@ -38,11 +36,24 @@ def main():
 
     optimize(systems)
 
+    print('Autonomous Systems:')
+    print()
+    print(tabulate([[asys, asys.local_preference] for asys in systems], headers=[
+          'Autonomous System', 'Local Preference'], tablefmt='pretty'))
+    print()
+
+    for asys in systems:
+        print(f'Neighbours of {asys}:')
+        print()
+        print(tabulate(asys.display_neighbour_info(), headers=[
+              'Autonomous System', 'Weight'], tablefmt='pretty'))
+        print()
+
     for asys in systems:
         print(f'Routing Table for {asys}:')
         print()
         print(tabulate(asys.display_routing_table(), headers=[
-              'Autonomous System', 'Weight', 'Hops', 'Next Jump'], tablefmt='orgtbl'))
+              'Autonomous System', 'Weight', 'Hops', 'Next Jump'], tablefmt='pretty'))
         print()
 
 

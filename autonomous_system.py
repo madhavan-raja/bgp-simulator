@@ -73,15 +73,10 @@ class autonomous_system:
                     if other_as.hops[asys] == math.inf:
                         other_as.next_jump[asys] = None
 
-    def display_asys_info(self):
-        print(f'{self} ({self.local_preference}) :', end=' ')
-        for neighbour in self.neighbours.keys():
-            print(f'{neighbour} ({self.neighbours[neighbour]})', end=' ')
+    def display_neighbour_info(self):
+        return [[neighbour, self.neighbours[neighbour]]
+                for neighbour in self.neighbours.keys()]
 
     def display_routing_table(self):
-        routing_info = [[asys, self.weighted_conn[asys],
-                         self.hops[asys], self.next_jump[asys]] for asys in autonomous_system.systems]
-        # for asys in autonomous_system.systems:
-        # routing_info.append([asys, self.weighted_conn[asys],
-        # self.hops[asys], self.next_jump])
-        return routing_info
+        return [[asys, self.weighted_conn[asys],
+                 self.hops[asys], self.next_jump[asys]] for asys in autonomous_system.systems]
